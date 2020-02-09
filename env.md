@@ -4,6 +4,7 @@
   - [构建](#%E6%9E%84%E5%BB%BA)
   - [启动](#%E5%90%AF%E5%8A%A8)
 - [mongodb镜像](#mongodb%E9%95%9C%E5%83%8F)
+  - [应用启动（不使用docker时）](#%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E4%B8%8D%E4%BD%BF%E7%94%A8docker%E6%97%B6)
 # 用户设置
 - 添加用户  
 `adduser l1nkkk`
@@ -57,10 +58,13 @@ CMD ["/usr/local/bin/etcd"]
 `docker images`
 
 ## 启动
-`docker run -d -p 2379:2379 --name etcd-master ubuntu-etcd   /usr/local/bin/etcd --listen-client-urls 'http://0.0.0.0:2379' --advertise-client-urls 'http://0.0.0.0:2379'`
+`docker run -d --net=host -p 2379:2379 --name etcd-master ubuntu-etcd   /usr/local/bin/etcd --listen-client-urls 'http://0.0.0.0:2379' --advertise-client-urls 'http://0.0.0.0:2379'`
+
 
 - 查看docker容器信息  
   `docker inspect `
 
 # mongodb镜像
-
+## 应用启动（不使用docker时）
+> https://blog.csdn.net/xingzishuai/article/details/82016141  
+`nohup mongod --dbpath=/home/l1nkkk/mongodb_data --bind-ip=0.0.0.0 &`
