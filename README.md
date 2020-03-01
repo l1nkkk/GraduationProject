@@ -118,7 +118,9 @@ qqqq
 
 ## 监控服务总体架构
 
-![1583056788726](D:/Work/hexo-coding/blog/public/img0/1583056788726.png)
+<center>
+<img src="pic/container-1.png" width="100%" height="100%" />
+</center>
 
 ## 监控Server
 
