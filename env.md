@@ -5,6 +5,8 @@
   - [启动](#%E5%90%AF%E5%8A%A8)
 - [mongodb镜像](#mongodb%E9%95%9C%E5%83%8F)
   - [应用启动（不使用docker时）](#%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E4%B8%8D%E4%BD%BF%E7%94%A8docker%E6%97%B6)
+- [apiserver镜像](#apiserver%E9%95%9C%E5%83%8F)
+- [master](#master)
 # 用户设置
 - 添加用户  
 `adduser l1nkkk`
@@ -23,8 +25,8 @@ l1nkkk  ALL=(ALL)       ALL
 > etcd使用：https://yq.aliyun.com/articles/623228
 
 ## 构建
-l1nkkk@iZ2zebcdgh4e5liei40rzhZ:~/etcdDocker$ cp ../etcd-v3.3.10-linux-amd64/etcdctl  ./  
-l1nkkk@iZ2zebcdgh4e5liei40rzhZ:~/etcdDocker$ cp ../etcd-v3.3.10-linux-amd64/etcd  ./
+`l1nkkk@iZ2zebcdgh4e5liei40rzhZ:~/etcdDocker$ cp ../etcd-v3.3.10-linux-amd64/etcdctl  ./`    
+`l1nkkk@iZ2zebcdgh4e5liei40rzhZ:~/etcdDocker$ cp ../etcd-v3.3.10-linux-amd64/etcd  ./`
 
 - Dockerfile
 ```Dockerfile
@@ -68,3 +70,24 @@ CMD ["/usr/local/bin/etcd"]
 ## 应用启动（不使用docker时）
 > https://blog.csdn.net/xingzishuai/article/details/82016141  
 `nohup mongod --dbpath=/home/l1nkkk/mongodb_data --bind-ip=0.0.0.0 &`
+
+
+# apiserver镜像
+
+```Dockerfile
+FROM ubuntu:latest
+RUN mkdir /opt/apidoc
+ADD apidoc /opt/apidoc
+EXPOSE 8888
+CMD ["/opt/apidoc/apiserver", "-webroot", "/opt/apidoc/"]
+```
+**构建：**  
+`sudo docker build -t apidoc_v1 .`
+
+**运行：**  
+`docker run  --net=host -p 8888:8888 --name apiserver -d  apidoc_v1 `
+
+# master 
+
+
+
