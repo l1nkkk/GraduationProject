@@ -205,4 +205,5 @@ qqqq
 ​	url:	http://xxx.xxx.xxx.xxx:8000/admin/  
 
 # 认证模块
-[认证.md](#https://github.com/l1nkkk/GraduationProject/blob/master/%E8%AE%A4%E8%AF%81.md)
+[认证.md](#https://github.com/l1nkkk/GraduationProject/blob/master/%E8%AE%A4%E8%AF%81.md)  
+大致框架已经设计好，即将开始写代码
