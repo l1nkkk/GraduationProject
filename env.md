@@ -5,6 +5,7 @@
   - [启动](#%E5%90%AF%E5%8A%A8)
 - [mongodb镜像](#mongodb%E9%95%9C%E5%83%8F)
   - [应用启动（不使用docker时）](#%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E4%B8%8D%E4%BD%BF%E7%94%A8docker%E6%97%B6)
+  - [直接拉取](#%E7%9B%B4%E6%8E%A5%E6%8B%89%E5%8F%96)
 - [apiserver镜像](#apiserver%E9%95%9C%E5%83%8F)
 - [master](#master)
 # 用户设置
@@ -70,16 +71,41 @@ CMD ["/usr/local/bin/etcd"]
 ## 应用启动（不使用docker时）
 > https://blog.csdn.net/xingzishuai/article/details/82016141  
 `nohup mongod --dbpath=/home/l1nkkk/mongodb_data --bind-ip=0.0.0.0 &`
+## 直接拉取
 
+```sh
+# 拉取镜像
+docker pull mongodb:4.2
+
+# 运行，并且绑定公网
+docker run -d -p 27017:27017 mongo:4.2  --bind_ip=0.0.0.0
+
+# 切入进正在运行的容器
+docker exec -it some-mongo bash
+
+# 获取docker中mongo的日志
+docker logs some-mongo
+
+
+```
 
 # apiserver镜像
-
+- 版本1
+  - 有点麻烦，每次有新的api都要重新构建
 ```Dockerfile
 FROM ubuntu:latest
 RUN mkdir /opt/apidoc
 ADD apidoc /opt/apidoc
 EXPOSE 8888
 CMD ["/opt/apidoc/apiserver", "-webroot", "/opt/apidoc/"]
+```
+- 版本2
+  - 使用挂载,在命令行的时候
+  - docker run -d --net=host -p 8888:8888 --name apiserver -v /home/l1nkkk/docker/apiserver/apidoc:api apidoc_v1
+```dockerfile
+FROM ubuntu:latest
+EXPOSE 8888
+CMD ["/api/apiserver","-webroot","/opt/apidoc/"]
 ```
 **构建：**  
 `sudo docker build -t apidoc_v1 .`
@@ -89,5 +115,19 @@ CMD ["/opt/apidoc/apiserver", "-webroot", "/opt/apidoc/"]
 
 # master 
 
+- 构建  
+  ` docker build -t master_v1:1.0 .`
 
+- Dockerfile
+```dockerfile
+FROM ubuntu:latest
+RUN mkdir /opt/master
+RUN mkdir /opt/master/webroot
+ADD master /opt/master
+ADD master.json /opt/master
+ADD webroot /opt/master/webroot
+EXPOSE 8070
+CMD ["/opt/master/master", "-config", "/opt/master/master.json"]
+
+```
 
