@@ -31,6 +31,7 @@
 - etcd : etcd安装包和配置文件
 - mongodb : mongodb配置文件
 - pic : 文档所用到的图片
+- doc : 相应文档
 
 # API在线文档
 http://www.l1nkkk.xyz:8888/
