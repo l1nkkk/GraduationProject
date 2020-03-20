@@ -616,13 +616,6 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "class",
-            "description": "<p>微服务种类，比如crontab</p>"
-          },
-          {
-            "group": "Parameter",
-            "type": "String",
-            "optional": false,
             "field": "insID",
             "description": "<p>微服务的insID</p>"
           },
@@ -638,7 +631,7 @@ define({ "api": [
             "type": "",
             "optional": false,
             "field": "实例",
-            "description": "{\"clientID\":\"111111ddd\",\"timestamp\":\"1584336471\"}"
+            "description": "{\"insID\":\"/instance/class/class-1\",\"timestamp\":\"1584336471\"}"
           }
         ]
       }
@@ -678,7 +671,7 @@ define({ "api": [
             "group": "Success 200",
             "type": "String",
             "optional": true,
-            "field": "authenticator",
+            "field": "auth",
             "description": "<p>服务器认证信息Authenticator<sub>s</sub></p>"
           },
           {
@@ -686,7 +679,7 @@ define({ "api": [
             "type": "",
             "optional": true,
             "field": "实例",
-            "description": "{\"errno\":0,\"msg\":\"success\",\"challengeCode\":\"1234wwww\",\"timestamp\":\"1584338328\",\"Authenticator\",\"feigj3ur98uf2rjfr92fjvf9efj9fdjc\"}"
+            "description": "{\"errno\":0,\"msg\":\"success\",\"challengeCode\":\"1234wwww\",\"timestamp\":\"1584338328\",\"auth\",\"feigj3ur98uf2rjfr92fjvf9efj9fdjc\"}"
           }
         ]
       }
@@ -708,7 +701,7 @@ define({ "api": [
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "authenticator",
+            "field": "auth",
             "description": "<p>客户端认证信息Authenticator<sub>c</sub></p>"
           },
           {
@@ -723,7 +716,7 @@ define({ "api": [
             "type": "",
             "optional": false,
             "field": "实例",
-            "description": "{\"Authenticator\":\"feefwf32rff39vesddw\",\"timestamp\":\"1584336471\"}"
+            "description": "{\"auth\":\"feefwf32rff39vesddw\",\"timestamp\":\"1584336471\"}"
           }
         ]
       }
@@ -794,21 +787,21 @@ define({ "api": [
             "type": "String",
             "optional": false,
             "field": "timestamp",
-            "description": "<p>时间戳Tb</p>"
+            "description": "<p>时间戳</p>"
           },
           {
             "group": "Parameter",
             "type": "String",
             "optional": false,
-            "field": "authenticator",
-            "description": "<p>认证信息Authenticator<sub>B</sub></p>"
+            "field": "auth",
+            "description": "<p>认证信息Authenticator</p>"
           },
           {
             "group": "Parameter",
             "type": "",
             "optional": false,
             "field": "实例",
-            "description": "{\"ida\":\"feegeasad\",\"idb\":\"dwwqfca\",\"timestamp\":\"1584340507\",\"authenticator\":\"dwfwfsafewefasd1wdw321dfefe\"}"
+            "description": "{\"ida\":\"feegeasad\",\"idb\":\"dwwqfca\",\"timestamp\":\"1584340507\",\"auth\":\"dwfwfsafewefasd1wdw321dfefe\"}"
           }
         ]
       }
