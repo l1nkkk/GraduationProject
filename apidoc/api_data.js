@@ -12,7 +12,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": ":8070/job/save",
+    "url": ":8070/crontab/job/save",
     "title": "添加任务",
     "name": "saveJob",
     "group": "Crontab-Master",
@@ -90,7 +90,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": ":8070/job/delete",
+    "url": ":8070/crontab/job/delete",
     "title": "删除任务",
     "name": "delJob",
     "group": "Crontab-Master",
@@ -154,7 +154,7 @@ define({ "api": [
   },
   {
     "type": "post",
-    "url": ":8070/job/kill",
+    "url": ":8070/crontab/job/kill",
     "title": "强杀任务",
     "name": "killJob",
     "group": "Crontab-Master",
@@ -218,7 +218,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": ":8070/job/list",
+    "url": ":8070/crontab/job/list",
     "title": "获取任务列表",
     "name": "getJoblist",
     "group": "Crontab-Master",
@@ -261,8 +261,8 @@ define({ "api": [
     "groupTitle": "Crontab"
   },
   {
-    "type": "post",
-    "url": ":8070/job/log",
+    "type": "get",
+    "url": ":8070/crontab/job/log",
     "title": "获取任务日志",
     "name": "getJoblog",
     "group": "Crontab-Master",
@@ -312,7 +312,7 @@ define({ "api": [
   },
   {
     "type": "get",
-    "url": ":8070/worker/list",
+    "url": ":8070/crontab/worker/list",
     "title": "获取节点列表",
     "name": "getWorkerlist",
     "group": "Crontab-Master",
@@ -335,17 +335,18 @@ define({ "api": [
           },
           {
             "group": "Success 200",
-            "type": "String-Array",
+            "type": "json-Array",
             "optional": false,
             "field": "data",
-            "description": "<p>节点ip</p>"
+            "description": "<p>节点实例名和节点ip</p>"
           },
           {
             "group": "Success 200",
             "type": "",
             "optional": false,
             "field": "实例",
-            "description": "{\"errno\":0,\"msg\":\"success\",\"data\":[\"192.168.3.248\"]}"
+            "description": "{\"errno\":0,\"msg\":\"success\",\"data\":[{\"workerName\":\"worker-l1nkkk\",\"ip\":\"192.168.3.248\"}]}"
+            
           }
         ]
       }

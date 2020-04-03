@@ -38,3 +38,6 @@ post_data：{"name":"jobname","command":"sleep 3","cronExpr":"* * * * *","ip":"1
 逻辑：从网页上传之后->到达服务器->服务器传送给了worker
 
 
+# 使用方法
+
+主机名---任务名
